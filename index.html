@@ -8,15 +8,37 @@
     <link rel="stylesheet" href="style.css">
   </head>
   
-  
+  <div class="wrapper"></div>
   
   <body>
     
 	<script>
+    function autoplay() {
+        var t = setTimeout(function(){
+            var button = document.querySelector('[title="Play"]') || false;
+            if (button) {
+                console.log('Click', button)
+                button.click()
+            }
+        }, 999)
+    }
+    document.addEventListener('DOMContentLoaded', (event) => {
+        autoplay()
+    })
     </script>
     
   <style>
+
       body {
+	      unselectable="on"
+ 	      onselectstart="return false;" 
+ 	      onmousedown="return false;">
+      }
+
+      .spotify {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
         -webkit-user-drag: none;
         -khtml-user-drag: none;
         -moz-user-drag: none;
@@ -27,34 +49,87 @@
         -moz-user-select: none;
         -webkit-user-select: none;
         user-select: none;
-        margin: 0;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: dark-gray;;
-        color: #000;
-	      width: 150px;
- 	      height: auto;
-	      unselectable="on"
- 	      onselectstart="return false;" 
- 	      onmousedown="return false;">
       }
 
-      .spotify {
+      .wrapper {
+        height: 100%;
+        width: 100%;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
         position: absolute;
-        bottom: 16px;
-        right: 16px;
+        background: linear-gradient(
+            124deg,
+            #ff2400,
+            #e81d1d,
+            #e8b71d,
+            #e3e81d,
+            #1de840,
+            #1ddde8,
+            #2b1de8,
+            #dd00f3,
+            #dd00f3
+        );
+        background-size: 1800% 1800%;
+
+        -webkit-animation: rainbow 60s ease infinite;
+        -z-animation: rainbow 60s ease infinite;
+        -o-animation: rainbow 60s ease infinite;
+        animation: rainbow 60s ease infinite;
       }
 
-    </style>
+    @-webkit-keyframes rainbow {
+    0% {
+        background-position: 0% 82%;
+    }
+    50% {
+        background-position: 100% 19%;
+    }
+    100% {
+        background-position: 0% 82%;
+    }
+    }
+    @-moz-keyframes rainbow {
+    0% {
+        background-position: 0% 82%;
+    }
+    50% {
+        background-position: 100% 19%;
+    }
+    100% {
+        background-position: 0% 82%;
+    }
+    }
+    @-o-keyframes rainbow {
+    0% {
+        background-position: 0% 82%;
+    }
+    50% {
+        background-position: 100% 19%;
+    }
+    100% {
+        background-position: 0% 82%;
+    }
+    }
+    @keyframes rainbow {
+    0% {
+        background-position: 0% 82%;
+    }
+    50% {
+        background-position: 100% 19%;
+    }
+    100% {
+        background-position: 0% 82%;
+    }
+    }
+   </style>
+
     
     <div class="spotify">
       <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3URc9oCOg6vN3gqF9MegOc?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
     
   </body>
-  
-  
   
 </html>
